@@ -5,7 +5,7 @@
   "main": "src/PreEntrega1.js",
   "type": "module",
   "scripts": {
-    "start": "dir src\\public && node src/app.js",
+    "start": "node src/app.js",
     "test": "mocha 'test/**/*.js' --timeout 10000 --exit"
   },
   "keywords": [],
