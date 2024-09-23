@@ -51,23 +51,8 @@ const hbs = handlebars.create({
     }
 });
 
-
-const setHeadersOnStatic = (res, path, stat) => {
-    const type = mime.getType(path);
-    res.set('content-type', type);
-  }
-  
-  const staticOptions = {
-    setHeaders: setHeadersOnStatic
-  }
-
-
-  app.use(express.static(path.join(__dirname, 'public'), staticOptions));
-
-
 // Configuración de archivos estáticos
-//app.use(express.static(path.join(__dirname, 'public')));
-
+app.use(express.static(path.join(__dirname, '/public/')));
 
 app.engine('handlebars', hbs.engine);
 app.set('views', path.join(__dirname, 'views'));
