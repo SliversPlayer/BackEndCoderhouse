@@ -19,6 +19,7 @@ import mockingRouter from './routes/mocking.router.js';
 import passwordResetRoutes from './routes/passwordReset.routes.js';
 import usersRouter from './routes/users.router.js';  // Ajusta la ruta según tu estructura de proyecto
 import { swaggerUi, swaggerSpec } from './config/swagger.config.js';
+import mime from 'mime';
 
 //Helpers
 import { multiply, formatPrice, eq} from './utils/helpers.js'; // Import the multiply helper
@@ -50,10 +51,22 @@ const hbs = handlebars.create({
     }
 });
 
+
+const setHeadersOnStatic = (res, path, stat) => {
+    const type = mime.getType(path);
+    res.set('content-type', type);
+  }
+  
+  const staticOptions = {
+    setHeaders: setHeadersOnStatic
+  }
+
+
+  app.use(express.static(path.join(__dirname, 'public'), staticOptions));
+
+
 // Configuración de archivos estáticos
-//app.use(express.static('public'));
-app.use(express.static(path.join(__dirname, 'public')));
-//app.use(express.static(path.join(__dirname, 'src', 'public')));
+//app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.engine('handlebars', hbs.engine);
