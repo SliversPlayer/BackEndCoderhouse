@@ -5,9 +5,8 @@
   "main": "src/PreEntrega1.js",
   "type": "module",
   "scripts": {
-    "start": "node src/app.js",
-    "test": "mocha 'test/**/*.js' --timeout 10000 --exit"
-  },
+    "start": "node src/app.js"
+    },
   "keywords": [],
   "author": "",
   "license": "ISC",
