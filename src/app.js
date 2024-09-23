@@ -18,8 +18,6 @@ import authRouter from './routes/authRouter.js'; // Importa el router de autenti
 import mockingRouter from './routes/mocking.router.js';
 import passwordResetRoutes from './routes/passwordReset.routes.js';
 import usersRouter from './routes/users.router.js';  // Ajusta la ruta según tu estructura de proyecto
-// import swaggerUi from 'swagger-ui-express';
-// import swaggerJsdoc from'swagger-jsdoc';
 import { swaggerUi, swaggerSpec } from './config/swagger.config.js';
 
 //Helpers
@@ -41,11 +39,6 @@ mongoose.connect(conString, {
 }).catch((error) => {
     console.error('Error conectándose a MongoDB', error);
 });
-// Configuración de archivos estáticos
-//app.use(express.static(path.join(__dirname, 'public')));
-//app.use(express.static(__dirname + "/src/public"));
-app.use(express.static(path.join(__dirname, 'public')));
-
 
 
 // Configure Handlebars with external helper
@@ -56,10 +49,11 @@ const hbs = handlebars.create({
         eq
     }
 });
-app.engine('handlebars', hbs.engine);
-//app.set('views', path.join(__dirname, 'views'));
-app.set('views', path.join(__dirname, 'views'));
 
+// Configuración de archivos estáticos
+app.use(express.static(path.join(__dirname, 'public')));
+app.engine('handlebars', hbs.engine);
+app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'handlebars');
 // Middleware
 app.use(express.json());

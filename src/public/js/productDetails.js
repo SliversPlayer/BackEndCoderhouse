@@ -1,4 +1,3 @@
-
 async function showProductDetails(productId) {
     try {
         // Llamada a la API para obtener los detalles del producto
